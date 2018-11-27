@@ -6,13 +6,32 @@ function type_check_v1($val,$type)
     else{
         return false;
     }
-    if($val == null){
+
+    if($val == null && $type == "null"){
         return false;
     }
-    else if(typeof $val == $type){
+    else{
+    	return false;
+	}
+
+    if(typeof $val == $type){
         return true;
     }
     else{
         return false;
     }
+
+    if ($val instanceof Function && $type=="function") {
+        return true;
+    }
+	else{
+		return false;
+	}
+
+	if ($val instanceof Function && $type=="Object") {
+        return true;
+    }
+	else{
+		return false;
+	}
 }
